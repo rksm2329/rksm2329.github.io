@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>排序 | rksm2329 Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="$$\texttt{SeekLuna 2023.6.11}$$论 $@\text{beyoursven}$ 有多恐怖这件事…… 排序通过比较操作来给同类元素排序。 可排序性要求比较规满足可排序性: 任意两个待排序的元素都可以进行比较 比较规则满足传递性 例如，石头剪刀布不满足可排序性。这谁都知道 稳定性排序后相等元素的位置是否发生变化 如果一定不发生变化，那么我们称它为稳定的排序 如果可能发生变化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序">
+<meta property="og:url" content="http://example.com/2023/11/23/sort/index.html">
+<meta property="og:site_name" content="rksm2329 Blog">
+<meta property="og:description" content="$$\texttt{SeekLuna 2023.6.11}$$论 $@\text{beyoursven}$ 有多恐怖这件事…… 排序通过比较操作来给同类元素排序。 可排序性要求比较规满足可排序性: 任意两个待排序的元素都可以进行比较 比较规则满足传递性 例如，石头剪刀布不满足可排序性。这谁都知道 稳定性排序后相等元素的位置是否发生变化 如果一定不发生变化，那么我们称它为稳定的排序 如果可能发生变化">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-11-23T05:08:37.000Z">
+<meta property="article:modified_time" content="2023-11-23T05:09:27.224Z">
+<meta property="article:author" content="rksm2329">
+<meta property="article:tag" content="算法学习笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="rksm2329 Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">rksm2329 Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hello! Welcome!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-sort" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/23/sort/" class="article-date">
+  <time class="dt-published" datetime="2023-11-23T05:08:37.000Z" itemprop="datePublished">2023-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      排序
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>$$<br>\texttt{SeekLuna 2023.6.11}<br>$$<br>论 $@\text{beyoursven}$ 有多恐怖这件事……</p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>通过比较操作来给<strong>同类元素</strong>排序。</p>
+<h2 id="可排序性"><a href="#可排序性" class="headerlink" title="可排序性"></a>可排序性</h2><p>要求比较规满足可排序性:</p>
+<p>任意两个待排序的元素<strong>都可以</strong>进行比较</p>
+<p>比较规则满足<strong>传递性</strong></p>
+<p>例如，石头剪刀布不满足可排序性。<del>这谁都知道</del></p>
+<h2 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h2><p>排序后<strong>相等元素的位置是否发生变化</strong></p>
+<p>如果<strong>一定不发生变化</strong>，那么我们称它为<strong>稳定的排序</strong></p>
+<p>如果<strong>可能发生变化</strong>，那我们称它为<strong>不稳定的排序</strong></p>
+<h2 id="逆序对"><a href="#逆序对" class="headerlink" title="逆序对"></a>逆序对</h2><p>处于逆序关系的一对元素:存在下标 $i,j,(i &lt; j)$，满足 $a_{i} &gt; a_{j}$，称 $(i,j)$ 为一对<strong>逆序对</strong></p>
+<h3 id="例题-逆序对统计"><a href="#例题-逆序对统计" class="headerlink" title="例题:逆序对统计"></a>例题:逆序对统计</h3><p>题目让我们求出 $n$ 个不重复的数中有多少个逆序对</p>
+<p>既然这题数据够小，那我们就可以……手打暴力</p>
+<h3 id="示例Code"><a href="#示例Code" class="headerlink" title="示例Code:"></a>示例Code:</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e3</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,ret,a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    cin &gt;&gt; a[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">      ret += a[i] &gt; a[j] ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; ret;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="排序函数"><a href="#排序函数" class="headerlink" title="排序函数"></a>排序函数</h2><p><code>C++ STL(Standard Library,标准库)</code>中通过 <code>&lt;algorithm&gt;</code> 头文件中的函数 <code>sort()</code> 和 <code>stable_sort()</code> 预先实现了一些排序算法，只不过，<code>sort()</code>不稳定，而<code>stable_sort()</code>是稳定的（可能后者用的是 $\text{Merge Sort}$ 吧……）。</p>
+<p>用法：<code>函数名(起始地址，结束地址，比较器);</code>,表示按比较器函数实现的排序规则对<code>(起始地址，结束地址)</code>做排序，其中比较器是<strong>可选参数</strong></p>
+<p><code>sort()</code> 和 <code>stable_sort()</code> 都是<strong>基于比较的排序</strong>，平均需要 $n \cdot \log(n)$ 次的元素比较和移动，其中 $n$ 表示待排序元素的数量。基于比较的排序时间复杂度至少为 $O(n\log(n))$。</p>
+<h3 id="例题-数字排序1"><a href="#例题-数字排序1" class="headerlink" title="例题:数字排序1"></a>例题:数字排序1</h3><p>题目让我们<strong>从小到大</strong>排序，我们就可以用<code>sort</code>函数啦~</p>
+<h3 id="示例Code-1"><a href="#示例Code-1" class="headerlink" title="示例Code:"></a>示例Code:</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    cin &gt;&gt; a[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">stable_sort</span>(a + <span class="number">1</span>,a + n + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    cout &lt;&lt; a[i] &lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="比较器"><a href="#比较器" class="headerlink" title="比较器"></a>比较器</h2><p>用函数实现的自定义比较规则。</p>
+<p>在$C++$中，比较器接受两个<strong>同类型参数</strong>，第一个参数靠前时返回$true$，否则返回$false$（包括相等的情况）</p>
+<p>例如：大数靠前的比较器:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">int</span> i,<span class="type">int</span> j)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> i &gt; j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例题-数字排序2"><a href="#例题-数字排序2" class="headerlink" title="例题:数字排序2"></a>例题:数字排序2</h3><p>题目让我们<strong>从大到小</strong>排序，我们又可以用<code>sort</code>函数啦~（</p>
+<p>当然我们需要一个<code>cmp</code>函数</p>
+<h3 id="示例Code-2"><a href="#示例Code-2" class="headerlink" title="示例Code:"></a>示例Code:</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x &gt; y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    cin &gt;&gt; a[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">stable_sort</span>(a + <span class="number">1</span>,a + n + <span class="number">1</span>,cmp);</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    cout &lt;&lt; a[i] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结构体排序！"><a href="#结构体排序！" class="headerlink" title="结构体排序！"></a>结构体排序！</h2><p>重点终于来了（</p>
+<p>结构体排序是指开一个结构体，这知道吧，在写一个<code>cmp</code>函数，这也知道吧，然后修改一下<code>cmp</code>，把里面的<code>return</code>语句改一下，假设是这样的：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span>&#123;</span><br><span class="line">    <span class="type">int</span> c,id;</span><br><span class="line">&#125;a[MAXN];</span><br></pre></td></tr></table></figure>
+<p>可见这是一个结构体，确切地说，是一个用来存储学生的某某某东西的结构体，然后我们要对它进行排序，怎么排呢？如果你要排的是 $c$（默认小数靠前），那么<code>cmp</code>就这么写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">const</span> Student &amp;a, <span class="type">const</span> Student &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.c &lt; b.c;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>然后如果你要排的是$id$（还是小数靠前），就这么写：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">const</span> Student &amp;a, <span class="type">const</span> Student &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.id &lt; b.id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>大的靠前的同理</p>
+<h3 id="例题1-排序与编号"><a href="#例题1-排序与编号" class="headerlink" title="例题1:排序与编号"></a>例题1:排序与编号</h3><p>题目让我们给长度为 $n$ 的数组排序，然后输出排序后的编号，那么我们可以这样，先写一个结构体，里面有$c,id$两个值，还有一个用来存储数据的$Node$类型的$a$数组：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN - <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span>&#123;</span><br><span class="line">    <span class="type">int</span> c,id;</span><br><span class="line">&#125;a[MAXN];</span><br></pre></td></tr></table></figure>
+<p>然后，就是刚刚讲的结构体排序，因为题目给的是让我们从小到大排序</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">const</span> Node a, <span class="type">const</span> Node b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.c &lt; b.c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：这里要写的是$a.c$，而不是$a.id$，因为不是给$id$排序。</p>
+<h3 id="完整示例Code"><a href="#完整示例Code" class="headerlink" title="完整示例Code:"></a>完整示例Code:</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">  <span class="type">int</span> id,c;</span><br><span class="line">&#125;a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(node x,node &amp;y)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x.c &lt; y.c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    cin &gt;&gt; a[i].c;</span><br><span class="line">    a[i].id = i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">sort</span>(a + <span class="number">1</span>, a + n + <span class="number">1</span>,cmp);</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">    cout &lt;&lt; a[i].id &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例题2-多关键字排序"><a href="#例题2-多关键字排序" class="headerlink" title="例题2:多关键字排序"></a>例题2:多关键字排序</h3><p>题目让我们给同学们的$m$课成绩排序，并按顺序输出排序后的学号，我们还是写结构体排序，注意是有$m$科，所以结构体里面还需要一个数组。</p>
+<p>小 a:结构体里是开了数组，但 cmp 函数怎么写？</p>
+<p>小 b:谁说cmp函数不能写循环的捏？</p>
+<p>$\text{beyoursven}$：典型的只会写板子代码……</p>
+<h3 id="示例Code-3"><a href="#示例Code-3" class="headerlink" title="示例Code:"></a>示例Code:</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e4</span> + <span class="number">10</span>,maxn = <span class="number">1e1</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Student</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> km[maxn];</span><br><span class="line">&#125;stu[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(Student &amp;a,Student &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (a.km[i] != b.km[i])&#123;</span><br><span class="line">            <span class="keyword">return</span> a.km[i] &gt; b.km[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)&#123;</span><br><span class="line">            cin &gt;&gt; stu[i].km[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(stu + <span class="number">1</span>,stu + n + <span class="number">1</span>,cmp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)&#123;</span><br><span class="line">            cout &lt;&lt; stu[i].km[j] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="重载"><a href="#重载" class="headerlink" title="重载&lt;运算符"></a>重载<code>&lt;</code>运算符</h2><p>排序函数<strong>默认</strong>使用 <code>&lt;</code> 符号来比较。通过在结构体内重载 <code>&lt;</code> 运算符，可以让排序函数支持结构体排序的比较规则，类似于比较器。</p>
+<p>格式:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="keyword">operator</span> &lt; (<span class="type">const</span> Node &amp; i) <span class="type">const</span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Node为结构体类型名称，i为对象名</span></span><br><span class="line"><span class="comment">//在大括号中实现比较规则，const表示该运算符不能对成员进行修改操作</span></span><br></pre></td></tr></table></figure>
+<h3 id="例题-区间排序"><a href="#例题-区间排序" class="headerlink" title="例题:区间排序"></a>例题:区间排序</h3><p>题目让我们按照左边界和右边界排序，这里分为两种情况：</p>
+<p>1，左边界不同</p>
+<p>2，左边界相同</p>
+<p>这两个东西要写一个<code>||</code>符号，左边界相同和另一个条件（右边界不同）要写<code>&amp;&amp;</code>。</p>
+<h3 id="示例Code-4"><a href="#示例Code-4" class="headerlink" title="示例Code:"></a>示例Code:</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">    <span class="type">int</span> l,r;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> &lt; (<span class="type">const</span> node &amp;k) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> l &lt; k.l ||l == k.l &amp;&amp; r &lt; k.r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        cin &gt;&gt; a[i].l &gt;&gt; a[i].r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(a + <span class="number">1</span>, a + n + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        cout &lt;&lt; a[i].l &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; a[i].r &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/11/23/sort/" data-id="clr6c168f0019w8hq1ucpcmco" data-title="排序" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">算法学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/11/23/binary/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          进制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/11/22/fast-power/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">快速幂</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82/" rel="tag">杂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">算法学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E6%9D%82/" style="font-size: 10px;">杂</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">算法学习笔记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/09/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328C/">ABC328C Consecutive 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328D/">ABC328D Take ABC 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328E/">ABC328E Modulo MST 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC329C/">ABC329C Count xxx 题解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 rksm2329<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

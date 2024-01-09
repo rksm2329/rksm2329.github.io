@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>数论 | rksm2329 Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="数论素数又称质数，是整数的基本元素 素数判定：12345678bool isprime(int n)&amp;#123;  for (int i &#x3D; 2; i * i &lt;&#x3D; n; i++)&amp;#123;      if (n % i &#x3D;&#x3D; 0)&amp;#123;          return 0;      &amp;#125;  &amp;#125;  return 1;&amp;#125;   $\texttt{Eratos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数论">
+<meta property="og:url" content="http://example.com/2023/11/23/number-thoery/index.html">
+<meta property="og:site_name" content="rksm2329 Blog">
+<meta property="og:description" content="数论素数又称质数，是整数的基本元素 素数判定：12345678bool isprime(int n)&amp;#123;  for (int i &#x3D; 2; i * i &lt;&#x3D; n; i++)&amp;#123;      if (n % i &#x3D;&#x3D; 0)&amp;#123;          return 0;      &amp;#125;  &amp;#125;  return 1;&amp;#125;   $\texttt{Eratos">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-11-23T05:10:34.000Z">
+<meta property="article:modified_time" content="2023-11-23T05:11:08.364Z">
+<meta property="article:author" content="rksm2329">
+<meta property="article:tag" content="算法学习笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="rksm2329 Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">rksm2329 Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hello! Welcome!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-number-thoery" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/23/number-thoery/" class="article-date">
+  <time class="dt-published" datetime="2023-11-23T05:10:34.000Z" itemprop="datePublished">2023-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      数论
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="数论"><a href="#数论" class="headerlink" title="数论"></a>数论</h1><h2 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h2><p>又称<strong>质数</strong>，是整数的基本元素</p>
+<h3 id="素数判定："><a href="#素数判定：" class="headerlink" title="素数判定："></a>素数判定：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isprime</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i * i &lt;= n; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span> (n % i == <span class="number">0</span>)&#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="texttt-Eratosthenes-埃氏筛"><a href="#texttt-Eratosthenes-埃氏筛" class="headerlink" title="$\texttt{Eratosthenes}$ 埃氏筛"></a>$\texttt{Eratosthenes}$ 埃氏筛</h3><p>原理是一个素数的整数倍数不可能是素数</p>
+<h3 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Sieve</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!v[i]) &#123;</span><br><span class="line">      prime[++cnt] = i;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> j = i; i &lt;= n / j; j++) &#123;</span><br><span class="line">        v[i * j] = <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="texttt-Euler-欧拉筛"><a href="#texttt-Euler-欧拉筛" class="headerlink" title="$\texttt{Euler}$ 欧拉筛"></a>$\texttt{Euler}$ 欧拉筛</h3><p>原理是用一个数的最小素因子筛去其范围内的素数倍数</p>
+<h3 id="示例代码：-1"><a href="#示例代码：-1" class="headerlink" title="示例代码："></a>示例代码：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Sieve</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!v[i]) &#123;</span><br><span class="line">            prime[++tot] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i * prime[j] &lt;= n; j++) &#123;</span><br><span class="line">            v[i * prime[j]] = prime[j];</span><br><span class="line">            <span class="keyword">if</span> (i % prime[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="texttt-U249927-线性筛质数"><a href="#texttt-U249927-线性筛质数" class="headerlink" title="$\texttt{U249927}$ 线性筛质数"></a>$\texttt{U249927}$ 线性筛质数</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, q;</span><br><span class="line"><span class="type">int</span> mrk[<span class="number">100000010</span>];</span><br><span class="line"><span class="type">int</span> prm[<span class="number">100000010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">prime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mrk[i] == <span class="number">0</span>) &#123;</span><br><span class="line">            prm[++index] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= index &amp;&amp; prm[j] * i &lt; n; j++) &#123;</span><br><span class="line">            mrk[i * prm[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % prm[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; q;</span><br><span class="line">    <span class="built_in">prime</span>();</span><br><span class="line">    <span class="type">int</span> k;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= q; i++)&#123;</span><br><span class="line">        cin &gt;&gt; k;</span><br><span class="line">        cout &lt;&lt; prm[k] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><del>等会，我不应该在这里贴U249927的代码的呀</del></p>
+<hr>
+<h2 id="质因数分解"><a href="#质因数分解" class="headerlink" title="质因数分解"></a>质因数分解</h2><p>把一个$\ge2$的正整数拆分成素数幂的乘积，称为<strong>质因数分解</strong></p>
+<p>举$3<br>$个栗子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">24 = 2 × 2 × 2 × 3 = 2³ × 3¹</span><br><span class="line"></span><br><span class="line">33 = 3 × 11 = 3¹ × 11¹</span><br><span class="line"></span><br><span class="line">17 = 17 = 17¹</span><br></pre></td></tr></table></figure>
+
+<h3 id="示例代码：-2"><a href="#示例代码：-2" class="headerlink" title="示例代码："></a>示例代码：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Divide</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>)&#123;</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">            n /= i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="唯一分解定理"><a href="#唯一分解定理" class="headerlink" title="唯一分解定理"></a>唯一分解定理</h3><p>任意 $\ge2$ 的正整数的质因数分解方案是<strong>唯一</strong>的</p>
+<p>这个定理是整个数论研究的基石：<strong>“整数的基本元素是质数”</strong></p>
+<p>因此也被称为<strong>算术基本定理</strong></p>
+<h3 id="示例代码：-3"><a href="#示例代码：-3" class="headerlink" title="示例代码："></a>示例代码：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">Divide</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; V;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i * i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">while</span> (n % i == <span class="number">0</span>)&#123;</span><br><span class="line">            V.<span class="built_in">push_back</span>(i);</span><br><span class="line">            n /= i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n &gt; <span class="number">1</span>) V.<span class="built_in">push_back</span>(x);</span><br><span class="line">    <span class="keyword">return</span> V;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="整除"><a href="#整除" class="headerlink" title="整除"></a>整除</h2><ul>
+<li><p>如果 $a$ 被 $p$ 整除，也就是说 $a$ 是 $p$ 的倍数，那么记为 $p \mid a$</p>
+</li>
+<li><p>如果 $a$ 是 $p$ 的倍数，那么 $a$ 的倍数也是 $p$ 的倍数，即 $p \mid ab (b∈Z+)$</p>
+</li>
+</ul>
+<p>可以由此推导出整除的“传递性”：若 $a\mid b,b\mid c$,则有$a\mid c$</p>
+<h3 id="关于整除"><a href="#关于整除" class="headerlink" title="关于整除"></a>关于整除</h3><ul>
+<li><p>若 $2$ 能整除 $a$ 的末位，则 $2 \mid a$</p>
+</li>
+<li><p>若 $4$ 能整除 $a$ 的末两位，则 $4 \mid a$</p>
+</li>
+<li><p>若 $8$ 能整除 $a$ 的末三位，则 $8 \mid a$</p>
+</li>
+<li><p>若 $3$ 能整除 $a$ 的各位数字之和，则 $3 \mid a$</p>
+</li>
+<li><p>若 $9$ 能整除 $a$ 的各位数字之和，则 $9 \mid a$</p>
+</li>
+<li><p>若 $11$ 能整除 $a$ 的偶位数字和与奇位数字和之差，则 $11 \mid a$</p>
+</li>
+</ul>
+<h3 id="约数"><a href="#约数" class="headerlink" title="约数"></a>约数</h3><p>除了<strong>完全平方数</strong>，约数总是成对出现的</p>
+<p>$N$的约数个数上限约 $2\times\sqrt n$</p>
+<hr>
+<h2 id="gcd"><a href="#gcd" class="headerlink" title="$\gcd$"></a>$\gcd$</h2><p>设 $a,b$ 是不同时为 $0$ 的整数，$c$ 为满足 $c \mid a$ &amp;&amp; $c \mid b$ 的最大整数，则称 $c$ 是 $a,b$ 的最大公约数，记为 $\gcd(a,b)$</p>
+<h3 id="gcd-a-b-的常用性质："><a href="#gcd-a-b-的常用性质：" class="headerlink" title="$\gcd(a,b)$ 的常用性质："></a>$\gcd(a,b)$ 的常用性质：</h3><ul>
+<li><p>$\gcd(a \times k,b \times k) &#x3D; k \times \gcd(a,b)$</p>
+</li>
+<li><p>若 $c \mid a$ &amp;&amp; $c | b$，则 $c \mid \gcd(a,b)$</p>
+</li>
+<li><p>$\gcd(a,b) &#x3D; \gcd(a,k \times a + b)$</p>
+</li>
+</ul>
+<h2 id="operatorname-lcm"><a href="#operatorname-lcm" class="headerlink" title="$\operatorname{lcm}$"></a>$\operatorname{lcm}$</h2><p>$a,b$ 的最小公倍数，记作 $\operatorname{lcm}(a,b)$</p>
+<p>$\operatorname{lcm}(a,b)$ 的常用性质：</p>
+<ul>
+<li><p>$\operatorname{lcm}(a,b) \times \gcd(a,b)&#x3D;a \times b$</p>
+</li>
+<li><p>若 $a \mid m$ &amp;&amp; $b \mid m$，则 $\operatorname{lcm}(a,b) \mid m$</p>
+</li>
+<li><p>$\operatorname{lcm}(m \times a,m \times b)&#x3D;m \times \operatorname{lcm}(a,b) (m∈Z+$)</p>
+</li>
+</ul>
+<h2 id="欧几里得算法"><a href="#欧几里得算法" class="headerlink" title="欧几里得算法"></a>欧几里得算法</h2><p>又称<strong>辗转相除法</strong></p>
+<p>时间复杂度：$O(\log(a+b))$</p>
+<h3 id="示例代码：-4"><a href="#示例代码：-4" class="headerlink" title="示例代码："></a>示例代码：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b == <span class="number">0</span> ? a : <span class="built_in">gcd</span>(b,a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h3><ul>
+<li><p>设$\gcd(a,b) &#x3D; c$，则 $a &#x3D; c \times x,b &#x3D; c \times y &#x2F;&#x2F;x,y∈Z$</p>
+</li>
+<li><p>那么：$(a - b) &#x3D; c \times x + c \times y &#x3D; c \times (x + y)$， 同时：$a \bmod b &#x3D; ax$</p>
+</li>
+<li><p>也就是说：$a,b$ 两个数都是由最大公约数 $c$ 推出来的，$a,b$ 相减 &#x2F; 取模都不会改变这个最大公约数 $c$</p>
+</li>
+<li><p>而 $a,b$ 通过不断相减 &#x2F; 取模来迭代，会使得 $a,b$ 越来越小直至一方完全被消掉（变为$0$）</p>
+</li>
+</ul>
+<h2 id="大整数-gcd"><a href="#大整数-gcd" class="headerlink" title="大整数$\gcd$"></a>大整数$\gcd$</h2><ul>
+<li><p>$a &lt; b$ 时，$\gcd(a,b) &#x3D; \gcd(b,a)$</p>
+</li>
+<li><p>$a &#x3D; b$ 时，$\gcd(a,b) &#x3D; a$</p>
+</li>
+<li><p>$a,b$ 同为偶数时，$\gcd(a,b) &#x3D; 2\gcd(a&#x2F;2,b&#x2F;2)$</p>
+</li>
+<li><p>$a$ 为偶数 $b$ 为奇数时，$\gcd(a,b)&#x3D;\gcd(a&#x2F;2,b)$</p>
+</li>
+<li><p>$a$ 为奇数 $b$ 为偶数时，$\gcd(a,b)&#x3D;\gcd(a,b&#x2F;2)$</p>
+</li>
+<li><p>$a,b$ 同为奇数时，$\gcd(a,b)&#x3D;\gcd(a-b,b)$</p>
+</li>
+</ul>
+<p>这个算法又称“<strong>更相减损术</strong>”</p>
+<h3 id="示例代码：-5"><a href="#示例代码：-5" class="headerlink" title="示例代码："></a>示例代码：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (a &lt; b) <span class="keyword">return</span> <span class="built_in">gcd</span>(b,a);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (a == b) <span class="keyword">return</span> a;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (a &amp; <span class="number">1</span> == <span class="number">0</span>) <span class="keyword">return</span> b &amp; <span class="number">1</span> == <span class="number">0</span> ? <span class="number">2</span> * <span class="built_in">gcd</span>(a &gt;&gt; <span class="number">1</span>,b &gt;&gt; <span class="number">1</span>) : <span class="built_in">gcd</span>(a &gt;&gt; <span class="number">1</span>,b);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> b &amp; <span class="number">1</span> == <span class="number">0</span> ? <span class="built_in">gcd</span>(a,b &gt;&gt; <span class="number">1</span>) : <span class="built_in">gcd</span>(a - b,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="裴蜀定理"><a href="#裴蜀定理" class="headerlink" title="裴蜀定理"></a>裴蜀定理</h2><p>对任何整数 $a,b$，关于二元一次线性方程 $ax+by&#x3D;m$，当且仅当 $m$ 是 $\gcd(a,b)$ 的倍数时有解</p>
+<p>该方程如果有解，必然有无穷多组解，每组解都称为<strong>裴蜀数</strong>，可以用<strong>欧几里得算法</strong>求得</p>
+<p>推论：$a,b$ 互质的充要条件是存在整数 $x,y$ 使得 $ax+by&#x3D;1$，这一推论还可以推广到更多元的情况</p>
+<h2 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h2><p>此算法用于求方程 $ax+by&#x3D;c$ 的整数解，其中 $c&#x3D;\gcd(a,b)$<br>根据裴蜀定理，该方程<strong>必定有解</strong></p>
+<p>根据欧几里得算法有：$\gcd(a,b)&#x3D;\gcd(b,a\bmod b)$</p>
+<p>于是：$ax+by&#x3D;\gcd(a,b)&#x3D;\gcd(b,a \bmod b)&#x3D;bx+(a \bmod b)y$</p>
+<p>右边式子把 $a \bmod b$展开：$bx+(a-a \div b \times b)y$</p>
+<p>合并同类项：$ay+b(x-a \div b \times y)$</p>
+<p>也即：$ax+by&#x3D;ay+b(x-a \div b \times y)$</p>
+<p>意味着，如果 $(x,y)$ 是一组解，那么 $(y,x-a \div b \times y)$ 就是另一组解</p>
+<h3 id="这是一张《著名》的表"><a href="#这是一张《著名》的表" class="headerlink" title="这是一张《著名》的表"></a>这是一张《著名》的表</h3><p>如方程 $99x+78y&#x3D;6$，求解 $x,y$ 的过程如下表 $(x&#x3D;y1,y&#x3D;x1-[a\div b]\times y)$:</p>
+<table>
+<thead>
+<tr>
+<th align="center">$a$</th>
+<th align="center">$b$</th>
+<th align="center">$[a \div b]$</th>
+<th align="center">$d$</th>
+<th align="center">$x$</th>
+<th align="center">$y$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$99$</td>
+<td align="center">$78$</td>
+<td align="center">$1$</td>
+<td align="center">$3$</td>
+<td align="center">$-22$</td>
+<td align="center">$-28$</td>
+</tr>
+<tr>
+<td align="center">$78$</td>
+<td align="center">$21$</td>
+<td align="center">$3$</td>
+<td align="center">$3$</td>
+<td align="center">$-6$</td>
+<td align="center">$-22$</td>
+</tr>
+<tr>
+<td align="center">$21$</td>
+<td align="center">$15$</td>
+<td align="center">$1$</td>
+<td align="center">$3$</td>
+<td align="center">$-4$</td>
+<td align="center">$-6$</td>
+</tr>
+<tr>
+<td align="center">$15$</td>
+<td align="center">$6$</td>
+<td align="center">$2$</td>
+<td align="center">$3$</td>
+<td align="center">$2$</td>
+<td align="center">$-4$</td>
+</tr>
+<tr>
+<td align="center">$6$</td>
+<td align="center">$3$</td>
+<td align="center">$2$</td>
+<td align="center">$3$</td>
+<td align="center">$0$</td>
+<td align="center">$-2$</td>
+</tr>
+<tr>
+<td align="center">$3$</td>
+<td align="center">$0$</td>
+<td align="center">$N&#x2F;A$</td>
+<td align="center">$3$</td>
+<td align="center">$2$</td>
+<td align="center">$0$</td>
+</tr>
+</tbody></table>
+<p>可以发现，$(a,b)$ 自上而下，$(x,y)$ 自下而上。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Exgcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> &amp;c,<span class="type">int</span> &amp;x,<span class="type">int</span> &amp;y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!b)&#123;</span><br><span class="line">        c = a; x = <span class="number">1</span>; y = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">Exgcd</span>(b,a % b,c,y,x);</span><br><span class="line">        y -= x * (a / b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们一直迭代到 $b&#x3D;0$ 时，有 $c&#x3D;a$，方程变为 $ax&#x3D;a$，解为 $(1,0)$</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/11/23/number-thoery/" data-id="clr6c1683000ow8hqe16ye84v" data-title="数论" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">算法学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/11/26/STL-iterator/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          C++ STL - 迭代器
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/11/23/binary/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">进制</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82/" rel="tag">杂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">算法学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E6%9D%82/" style="font-size: 10px;">杂</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">算法学习笔记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/09/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328C/">ABC328C Consecutive 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328D/">ABC328D Take ABC 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328E/">ABC328E Modulo MST 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC329C/">ABC329C Count xxx 题解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 rksm2329<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

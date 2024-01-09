@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>进制 | rksm2329 Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="进制$\texttt{SeekLuna}$ $2023.6.18$概念数量是抽象的，用物体、符号代替数量（结绳计数，算盘，正字计数） 阿拉伯数字符号 $0-9$，我们常用阿拉伯数字来表示数量。 进制进制：按照一定比例对符号进行换算。 基数：进制数，可以使用的不同的符号的数量。 位数量是无限的，不能用无限的符号来表示数量，而摆放符号的位置是无限的，这些位置就被称为位。 书写规范：左边为高位，右边位低">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进制">
+<meta property="og:url" content="http://example.com/2023/11/23/binary/index.html">
+<meta property="og:site_name" content="rksm2329 Blog">
+<meta property="og:description" content="进制$\texttt{SeekLuna}$ $2023.6.18$概念数量是抽象的，用物体、符号代替数量（结绳计数，算盘，正字计数） 阿拉伯数字符号 $0-9$，我们常用阿拉伯数字来表示数量。 进制进制：按照一定比例对符号进行换算。 基数：进制数，可以使用的不同的符号的数量。 位数量是无限的，不能用无限的符号来表示数量，而摆放符号的位置是无限的，这些位置就被称为位。 书写规范：左边为高位，右边位低">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-11-23T05:09:38.000Z">
+<meta property="article:modified_time" content="2023-11-24T11:49:45.025Z">
+<meta property="article:author" content="rksm2329">
+<meta property="article:tag" content="算法学习笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="rksm2329 Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">rksm2329 Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hello! Welcome!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-binary" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/23/binary/" class="article-date">
+  <time class="dt-published" datetime="2023-11-23T05:09:38.000Z" itemprop="datePublished">2023-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      进制
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="进制"><a href="#进制" class="headerlink" title="进制"></a>进制</h1><h2 id="texttt-SeekLuna-2023-6-18"><a href="#texttt-SeekLuna-2023-6-18" class="headerlink" title="$\texttt{SeekLuna}$ $2023.6.18$"></a>$\texttt{SeekLuna}$ $2023.6.18$</h2><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>数量是抽象的，用物体、符号代替数量（结绳计数，算盘，正字计数）</p>
+<p>阿拉伯数字符号 $0-9$，我们常用阿拉伯数字来表示数量。</p>
+<h2 id="进制-1"><a href="#进制-1" class="headerlink" title="进制"></a>进制</h2><p><strong>进制</strong>：按照一定比例对符号进行换算。</p>
+<p><strong>基数</strong>：进制数，可以使用的不同的符号的数量。</p>
+<h2 id="位"><a href="#位" class="headerlink" title="位"></a>位</h2><p>数量是无限的，不能用无限的符号来表示数量，而摆放符号的位置是无限的，这些位置就被称为<strong>位</strong>。</p>
+<p>书写规范：左边为高位，右边位低位。整数部分最低位编号为0，<strong>忽略前缀0</strong>；小数部分最高位编号为-1，<strong>忽略后缀0</strong>。</p>
+<h3 id="例题：数位取出"><a href="#例题：数位取出" class="headerlink" title="例题：数位取出"></a>例题：数位取出</h3><p>给定一个整数 $n$（十进制下），求它在 $a$ 进制表示下 $b$ 号位上的数。</p>
+<p>我们只需给 $n$ 除以 $b$ 次 $a$，再 $\bmod a$，就可以得出 $b$ 号位上的数</p>
+<h3 id="text-Code"><a href="#text-Code" class="headerlink" title="$\text{Code:}$"></a>$\text{Code:}$</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, a, b;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= b; i++)&#123;</span><br><span class="line">        n /= a;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; n % a;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>位权：当前位的 $1$ 与 $0$ 号位的 <code>1</code> 之间的<strong>换算比例</strong>，$i$ 号位的位权为基数的 $i$ 次方。可以理解为每个位置对应的单位值。</p>
+<p>以十进制为例：</p>
+<table>
+<thead>
+<tr>
+<th align="center">位号</th>
+<th align="center">$2$</th>
+<th align="center">$1$</th>
+<th align="center">$0$</th>
+<th align="center">$1$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">位权</td>
+<td align="center">$10_{} ^ {2} &#x3D; 100$</td>
+<td align="center">$10_{} ^ {1} &#x3D; 10$</td>
+<td align="center">$10_{} ^ {0} &#x3D; 1$</td>
+<td align="center">$10_{} ^ {-1} &#x3D; 0.1$</td>
+</tr>
+<tr>
+<td align="center">符号</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">7</td>
+</tr>
+</tbody></table>
+<p>数值为：$4 \cdot 10_{} ^ {2}+5 \cdot 10_{} ^ {1} + 6 \cdot 10_{} ^ {0} + 7 \cdot 10_{} ^ {-1} &#x3D; 456.7$，其中$a_{} ^ {-b} &#x3D; \frac{1}{a_{} ^ {b}}$，并且乘幂运算有性质$a_{} ^ {b} \cdot a_{} ^ {c} &#x3D; a_{} ^ {b+c}$</p>
+<h3 id="例题：数位修改"><a href="#例题：数位修改" class="headerlink" title="例题：数位修改"></a>例题：数位修改</h3><p>给定一个正整数 $n$（十进制下），将它的 $n$ 进制表示中的 $n$ 号位修改成 $x$，再用十进制进行输出。</p>
+<p>我们只需要求出 $b$ 号位的位权，然后将 $n$ 加上这个位权，就可以了。</p>
+<h3 id="text-Code-1"><a href="#text-Code-1" class="headerlink" title="$\text{Code:}$"></a>$\text{Code:}$</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,a,b,x;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; a &gt;&gt; b &gt;&gt; x;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> t = <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> y = n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= b; i++)&#123;</span><br><span class="line">        t *= a;</span><br><span class="line">        y /= a;</span><br><span class="line">    &#125;</span><br><span class="line">    y %= a;</span><br><span class="line">    cout &lt;&lt; n + (x - y) * t;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="进制表示"><a href="#进制表示" class="headerlink" title="进制表示"></a>进制表示</h2><p>最简表示：每一位上的符号只有一个</p>
+<p>从低位换算到相邻高位，称为<strong>进位</strong>。从高位换算到相邻低位，称为<strong>借位</strong>。高位的1等价于相邻低位的基数。</p>
+<p>对于非最简表示，每一位上有多个符号，需要通过进位，借位将其转为最简表示。</p>
+<table>
+<thead>
+<tr>
+<th align="center">位号</th>
+<th align="center">2</th>
+<th align="center">1</th>
+<th align="center">0</th>
+<th align="center">数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">位权</td>
+<td align="center">$10_{} ^ {2} &#x3D; 100$</td>
+<td align="center">$10_{} ^ {1} &#x3D; 10$</td>
+<td align="center">$10_{} ^ {0} &#x3D; 1$</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">最简表示</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">$4 \cdot 10_{} ^ {2} + 5 \cdot 10_{} ^ {1} + 6 \cdot 10_{} ^ {0} &#x3D; 456$</td>
+</tr>
+<tr>
+<td align="center">其他表示1</td>
+<td align="center">2</td>
+<td align="center">25</td>
+<td align="center">6</td>
+<td align="center">$2 \cdot 10_{} ^ {2} + 25 \cdot 10_{} ^ {1} + 6 \cdot 10_{} ^ {0} &#x3D; 456$</td>
+</tr>
+<tr>
+<td align="center">其他表示2</td>
+<td align="center">1</td>
+<td align="center">28</td>
+<td align="center">76</td>
+<td align="center">$1 \cdot 10_{} ^ {2} + 28 \cdot 10_{} ^ {1} + 76 \cdot 10_{} ^ {0} &#x3D; 456$</td>
+</tr>
+</tbody></table>
+<p>当基数很大时，每一位上有多个符号，只要小于基数，就是最简表示。例如一个$92$进制数的最简表示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">位号</th>
+<th align="center">2</th>
+<th align="center">1</th>
+<th align="center">0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">位权</td>
+<td align="center">$92_{} ^ {2} &#x3D; 8464$</td>
+<td align="center">$92_{} ^ {1} &#x3D; 92$</td>
+<td align="center">$92_{} ^ {0} &#x3D; 1$</td>
+</tr>
+<tr>
+<td align="center">符号</td>
+<td align="center">27</td>
+<td align="center">91</td>
+<td align="center">35</td>
+</tr>
+</tbody></table>
+<p>其数值为 $27 \cdot 92_{} ^ {2}+91 \cdot 92_{} ^ {1}+35 \cdot 92_{} ^ {0} &#x3D; 236935$</p>
+<p>以下为 $1-31$ 的 $10, 2, 16$ 进制表</p>
+<table>
+<thead>
+<tr>
+<th align="center">十进制</th>
+<th align="center">二进制</th>
+<th align="center">十六进制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">10</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">11</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">100</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">101</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">110</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">111</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">1000</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">1001</td>
+<td align="center">9</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">1010</td>
+<td align="center">0A</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">1011</td>
+<td align="center">0B</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">1100</td>
+<td align="center">0C</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">1101</td>
+<td align="center">0D</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">1110</td>
+<td align="center">0E</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">1111</td>
+<td align="center">0F</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">10000</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">10001</td>
+<td align="center">11</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">10010</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="center">10011</td>
+<td align="center">13</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="center">10100</td>
+<td align="center">14</td>
+</tr>
+<tr>
+<td align="center">21</td>
+<td align="center">10101</td>
+<td align="center">15</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="center">10110</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="center">23</td>
+<td align="center">10111</td>
+<td align="center">17</td>
+</tr>
+<tr>
+<td align="center">24</td>
+<td align="center">11000</td>
+<td align="center">18</td>
+</tr>
+<tr>
+<td align="center">25</td>
+<td align="center">11001</td>
+<td align="center">19</td>
+</tr>
+<tr>
+<td align="center">26</td>
+<td align="center">11010</td>
+<td align="center">1A</td>
+</tr>
+<tr>
+<td align="center">27</td>
+<td align="center">11011</td>
+<td align="center">1B</td>
+</tr>
+<tr>
+<td align="center">28</td>
+<td align="center">11100</td>
+<td align="center">1C</td>
+</tr>
+<tr>
+<td align="center">29</td>
+<td align="center">11101</td>
+<td align="center">1D</td>
+</tr>
+<tr>
+<td align="center">30</td>
+<td align="center">11110</td>
+<td align="center">1E</td>
+</tr>
+<tr>
+<td align="center">31</td>
+<td align="center">11111</td>
+<td align="center">1F</td>
+</tr>
+</tbody></table>
+<h3 id="基数运算"><a href="#基数运算" class="headerlink" title="基数运算"></a>基数运算</h3><ul>
+<li><p>乘以基数，相当于在对应进制下<strong>左移一位</strong>；</p>
+</li>
+<li><p>除以基数，相当于在对应进制下<strong>右移一位</strong>；</p>
+</li>
+<li><p>对基数取模，相当于取出$0$号位上的数。</p>
+</li>
+</ul>
+<h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><p>$10$ 进制转 $k$ 进制通常使用<strong>乘除法</strong>，$k$ 进制转 $10$ 进制通常使用<strong>位值累加法</strong>。</p>
+<p>$10$ 进制转 $k$ 进制通常对数值转数字串，$k$ 进制转 $10$ 进制。</p>
+<p>$a$ 进制转 $b$ 进制，通常先将 $a$ 进制转为 $10$ 进制，然后再转为 $b$ 进制。</p>
+<h3 id="位值累加法"><a href="#位值累加法" class="headerlink" title="位值累加法"></a>位值累加法</h3><p>每一位上的数字乘上当前进制的位权并累加。</p>
+<p>$2$ 进制转 $10$ 进制:</p>
+<p>$(1101.11)<em>{2} &#x3D; 1 \cdot 2</em>{} ^ {3}+1 \cdot 2_{} ^ {2}+0 \cdot 2_{} ^ {1}+1 \cdot 2_{} ^ {1}+1 \cdot 2_{} ^ {-1}+1 \cdot 2_{} ^ {-2}&#x3D;13.75$</p>
+<h3 id="例题：-x-进制转-10-进制-texttt-Luogu-有"><a href="#例题：-x-进制转-10-进制-texttt-Luogu-有" class="headerlink" title="例题：$x$ 进制转 10 进制($\texttt{Luogu}$有)"></a>例题：$x$ 进制转 10 进制($\texttt{Luogu}$有)</h3><p>给定一个小整数 $x$ 和一个 $x$ 进制的数 __$S$__。将 <strong>$S$</strong> 转为 $10$ 进制数。对于超过十进制的数码，用<code>A</code>,<code>B</code>,$\dots$ 表示。</p>
+<p>我们可以用位值累加法。</p>
+<h3 id="text-Code-2"><a href="#text-Code-2" class="headerlink" title="$\text{Code:}$"></a>$\text{Code:}$</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> k,ans;</span><br><span class="line">string s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; k &gt;&gt; s;</span><br><span class="line">    <span class="type">int</span> len = s.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">        ans = ans * k + (s[i] &lt;= <span class="string">&#x27;9&#x27;</span> ? s[i] - <span class="string">&#x27;0&#x27;</span> : s[i] - <span class="string">&#x27;A&#x27;</span> + <span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="乘除法"><a href="#乘除法" class="headerlink" title="乘除法"></a>乘除法</h3><p><strong>将每一位移动到0号位取出。</strong></p>
+<ul>
+<li>使用除法，除以目标进制基数，由高到低求出整数部分；</li>
+<li>使用乘法，乘以目标进制基数，由低到高求出小数部分。</li>
+</ul>
+<p>$10$进制转$16$进制：$(1234)<em>{10}&#x3D;(4D2)</em>{16}$</p>
+<h3 id="例题：x-进制转-10-进制"><a href="#例题：x-进制转-10-进制" class="headerlink" title="例题：x 进制转 10 进制"></a>例题：x 进制转 10 进制</h3><p>给一个小整数 $x$ 和一个 $x$ 进制的数 _$S$_。将 <em>$S$</em> 转为 $10$ 进制数。对于超过十进制的数码，用<code>A</code>,<code>B</code>$\dots$ 表示。</p>
+<p>我们可以用乘除法。</p>
+<h3 id="text-Code-3"><a href="#text-Code-3" class="headerlink" title="$\text{Code:}$"></a>$\text{Code:}$</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">32</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,x,tot,a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; x;</span><br><span class="line">    <span class="keyword">for</span> (; n &gt; <span class="number">0</span>; n /= x)&#123;</span><br><span class="line">        a[tot++] = n % x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = tot - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">        cout &lt;&lt; <span class="built_in">char</span>(a[i] &lt;= <span class="number">9</span> ? a[i] + <span class="string">&#x27;0&#x27;</span> : a[i] - <span class="number">10</span> + <span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/11/23/binary/" data-id="clr6c167z000cw8hq0uq209py" data-title="进制" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">算法学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/11/23/number-thoery/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          数论
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/11/23/sort/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">排序</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82/" rel="tag">杂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">算法学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E6%9D%82/" style="font-size: 10px;">杂</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">算法学习笔记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/09/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328C/">ABC328C Consecutive 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328D/">ABC328D Take ABC 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328E/">ABC328E Modulo MST 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC329C/">ABC329C Count xxx 题解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 rksm2329<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

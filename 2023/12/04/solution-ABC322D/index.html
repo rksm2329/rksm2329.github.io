@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>【ABC322D】题解 | rksm2329 Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Polyomino 题解Description 给定三个字符矩阵，求它们能不能拼在一起变成一个 $4 \times 4$ 的全部是 # 的矩阵。  Solution大模拟。说简单也不简单，很复杂；但是说难呢，又不难。 思路：搜索每一个矩阵的状态。 0x001 旋转矩阵一个字符矩阵，考虑顺时针旋转 $90$ 度，推出来得到：$$t_{i,j} &#x3D; s_{4 - j + 1,i}$$ 所以得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【ABC322D】题解">
+<meta property="og:url" content="http://example.com/2023/12/04/solution-ABC322D/index.html">
+<meta property="og:site_name" content="rksm2329 Blog">
+<meta property="og:description" content="Polyomino 题解Description 给定三个字符矩阵，求它们能不能拼在一起变成一个 $4 \times 4$ 的全部是 # 的矩阵。  Solution大模拟。说简单也不简单，很复杂；但是说难呢，又不难。 思路：搜索每一个矩阵的状态。 0x001 旋转矩阵一个字符矩阵，考虑顺时针旋转 $90$ 度，推出来得到：$$t_{i,j} &#x3D; s_{4 - j + 1,i}$$ 所以得">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-12-04T11:56:26.000Z">
+<meta property="article:modified_time" content="2023-12-04T11:57:13.073Z">
+<meta property="article:author" content="rksm2329">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="rksm2329 Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">rksm2329 Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hello! Welcome!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-solution-ABC322D" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/04/solution-ABC322D/" class="article-date">
+  <time class="dt-published" datetime="2023-12-04T11:56:26.000Z" itemprop="datePublished">2023-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      【ABC322D】题解
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Polyomino-题解"><a href="#Polyomino-题解" class="headerlink" title="Polyomino 题解"></a>Polyomino 题解</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
+<p>给定三个字符矩阵，求它们能不能拼在一起变成一个 $4 \times 4$ 的全部是 <code>#</code> 的矩阵。</p>
+</blockquote>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>大模拟。说简单也不简单，很复杂；但是说难呢，又不难。</p>
+<p>思路：搜索每一个矩阵的状态。</p>
+<h3 id="0x001-旋转矩阵"><a href="#0x001-旋转矩阵" class="headerlink" title="0x001 旋转矩阵"></a>0x001 旋转矩阵</h3><p>一个字符矩阵，考虑顺时针旋转 $90$ 度，推出来得到：<br>$$<br>t_{i,j} &#x3D; s_{4 - j + 1,i}<br>$$</p>
+<h2 id="所以得到了代码："><a href="#所以得到了代码：" class="headerlink" title="所以得到了代码："></a>所以得到了代码：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 旋转矩阵</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swp</span><span class="params">(<span class="type">int</span> index)</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">4</span>; j++)&#123;</span><br><span class="line">      sp[index][<span class="number">4</span> - j + <span class="number">1</span>][i] = s[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></h2><h3 id="0x002-平移矩阵"><a href="#0x002-平移矩阵" class="headerlink" title="0x002 平移矩阵"></a>0x002 平移矩阵</h3><p>枚举偏移量，然后暴力判断是否可以偏移。</p>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 平移矩阵</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">py</span><span class="params">(<span class="type">int</span> index,<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">4</span>; j++)&#123;</span><br><span class="line">      <span class="keyword">if</span> (sp[index][i][j] == <span class="string">&#x27;#&#x27;</span> &amp;&amp; (x + i &gt; <span class="number">4</span> || y &gt; j &gt; <span class="number">4</span> || x + i &lt; <span class="number">1</span> || y + j &lt; <span class="number">1</span>))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br></pre></td></tr></table></figure></h2><p>弄完上面两个东西之后，就可以开始暴力 dfs，枚举旋转次数和偏移量，存起来，判断是否合法即可。</p>
+<h3 id="0x003-Accept-Code"><a href="#0x003-Accept-Code" class="headerlink" title="0x003 Accept Code"></a>0x003 Accept Code</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/127362100">Accept Record</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> s[<span class="number">4</span>][<span class="number">5</span>][<span class="number">5</span>], sp[<span class="number">4</span>][<span class="number">5</span>][<span class="number">5</span>], pt[<span class="number">4</span>][<span class="number">5</span>][<span class="number">5</span>], t[<span class="number">5</span>][<span class="number">5</span>];</span><br><span class="line"><span class="type">int</span> vis[<span class="number">5</span>][<span class="number">5</span>], t1[<span class="number">4</span>], t2[<span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 旋转矩阵</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swp</span><span class="params">(<span class="type">int</span> index)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">4</span>; j++) &#123;</span><br><span class="line">      t[i][j] = sp[index][i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">4</span>; j++) &#123;</span><br><span class="line">      sp[index][i][j] = t[<span class="number">4</span> - j + <span class="number">1</span>][i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 平移矩阵</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">py</span><span class="params">(<span class="type">int</span> index, <span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">4</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (sp[index][i][j] == <span class="string">&#x27;#&#x27;</span> &amp;&amp;</span><br><span class="line">          (x + i &gt; <span class="number">4</span> || y + j &gt; <span class="number">4</span> || x + i &lt; <span class="number">1</span> || y + j &lt; <span class="number">1</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查矩阵</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">4</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (vis[i][j] != <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 求最后的分布情况</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ok</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">4</span>; j++) &#123;</span><br><span class="line">      vis[i][j] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> id = <span class="number">1</span>; id &lt;= <span class="number">3</span>; id++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> x = <span class="number">1</span>; x &lt;= <span class="number">4</span>; x++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> y = <span class="number">1</span>; y &lt;= <span class="number">4</span>; y++) &#123;</span><br><span class="line">        vis[x + t1[id]][y + t2[id]] += pt[id][x][y] == <span class="string">&#x27;#&#x27;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// dfs 搜索</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (x &gt; <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="built_in">ok</span>();</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">check</span>()) &#123;</span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Yes&quot;</span>;</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">4</span>; j++) &#123;</span><br><span class="line">      sp[x][i][j] = s[x][i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> scnt = <span class="number">1</span>; scnt &lt;= <span class="number">4</span>; scnt++) &#123;       <span class="comment">// 枚举旋转次数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> pyl1 = <span class="number">-4</span>; pyl1 &lt;= <span class="number">4</span>; pyl1++) &#123;    <span class="comment">// 行偏移量</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> pyl2 = <span class="number">-4</span>; pyl2 &lt;= <span class="number">4</span>; pyl2++) &#123;  <span class="comment">// 列偏移量</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">py</span>(x, pyl1, pyl2)) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">4</span>; j++) &#123;</span><br><span class="line">              pt[x][i][j] = sp[x][i][j];</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          t1[x] = pyl1, t2[x] = pyl2;</span><br><span class="line">          <span class="built_in">dfs</span>(x + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">swp</span>(x);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">4</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= <span class="number">4</span>; k++) &#123;</span><br><span class="line">        cin &gt;&gt; s[i][j][k];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">dfs</span>(<span class="number">1</span>);</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;No&quot;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/12/04/solution-ABC322D/" data-id="clr6c1682000jw8hq98gt9ml0" data-title="【ABC322D】题解" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/12/04/solution-ABC331E/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          ABC331E Set Meal 题解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/12/04/solution-ABC326C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">【ABC326C】题解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82/" rel="tag">杂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">算法学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E6%9D%82/" style="font-size: 10px;">杂</a> <a href="/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">算法学习笔记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/09/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328C/">ABC328C Consecutive 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328D/">ABC328D Take ABC 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC328E/">ABC328E Modulo MST 题解</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/04/solution-ABC329C/">ABC329C Count xxx 题解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 rksm2329<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
